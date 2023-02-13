@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="rachel babadzhanov">
+<meta name="author" content="Rachel Babadzhanov">
 
 <title>quartoCourseBlog - coding tips</title>
 <style>
@@ -81,17 +81,18 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/CrumpLab/quartoCourseBlog"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/MattCrumpLab"><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -113,10 +114,11 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>rachel babadzhanov </p>
+               <p>Rachel Babadzhanov </p>
             </div>
     </div>
       
+    
       
     </div>
     
@@ -131,10 +133,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>coding tips</p>
+<section id="notes-about-github" class="level2">
+<h2 class="anchored" data-anchor-id="notes-about-github">Notes about github</h2>
+<p>How to commit and push changes to github?</p>
+<ol type="1">
+<li>Make some changes to your files</li>
+<li>Render your website in Rstudio</li>
+<li>Commit your changes in github desktop with a commit message</li>
+<li>Push to github.com</li>
+</ol>
+</section>
+<section id="restarting-r" class="level2">
+<h2 class="anchored" data-anchor-id="restarting-r">restarting R</h2>
+<p>session –&gt; restart R</p>
+<p>cmd-shift-f10</p>
+<p>type .rs.restartR() in the console. THIS DID NOT WORK PROPERLY, the environment workspace did clear using this method.</p>
+</section>
+<section id="changing-the-picture-for-a-post" class="level2">
+<h2 class="anchored" data-anchor-id="changing-the-picture-for-a-post">changing the picture for a post</h2>
+<p>quarto blogs will display a picture in the listing of posts</p>
+<ol type="1">
+<li>put a picture file (e.g.,jpg,png,gif) inside the folder for the post.</li>
+<li>link to the picture with image: parameter in the .qmd yaml at the top of the document</li>
+</ol>
+<p>the yaml for this document looks like:</p>
+<hr>
+<p>title: “my tip sheet for week 2” author: “rachel babadzhanov” image: “images/cover.jpg” ___</p>
+</section>
+<section id="install.packages-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="install.packages-tidyverse">install.packages (“tidyverse”)</h2>
+<p>installing packages into ‘C:/users/staff/Documents/R/win-library/4.1’ (as ‘lib’ is unspecified) trying URL ‘https://cran.rstudio.com/bin/windows/contrib/4.1/tidyverse_1.3.2.zip’</p>
+<p>the main repository where packages reside is called CRAN</p>
+</section>
+<section id="difference-between-installing-a-package-aznd-loading-a-package" class="level2">
+<h2 class="anchored" data-anchor-id="difference-between-installing-a-package-aznd-loading-a-package">difference between installing a package aznd loading a package</h2>
+<ol type="1">
+<li>install.packages(). it will be available but not loaded every time you open up R.</li>
+</ol>
+<p>** never install a package from inside a scrip. only from console pane or the packages tab of the lower right pane.</p>
+<p>loading a package is done using the library() function. (aka. lauching an app)</p>
+<p>run the function using beep()</p>
+<p>if a package isn’t loaded, use ?package_name::function_name</p>
+</section>
+<section id="themes-and-accessibility" class="level2">
+<h2 class="anchored" data-anchor-id="themes-and-accessibility">themes and accessibility</h2>
+<p>used to change the font, size, and general appearance of R studio</p>
+<ol type="1">
+<li>go to tools</li>
+<li>then global options</li>
+<li>then appearance</li>
+</ol>
 <hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -178,7 +230,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -214,24 +283,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

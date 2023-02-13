@@ -1,7 +1,70 @@
 ---
 title: "coding tips"
-author: "rachel babadzhanov"
+author: "Rachel Babadzhanov"
 ---
 
-coding tips
----
+## Notes about github
+
+How to commit and push changes to github?
+
+1.  Make some changes to your files
+2.  Render your website in Rstudio
+3.  Commit your changes in github desktop with a commit message
+4.  Push to github.com
+
+## restarting R
+
+session --> restart R
+
+cmd-shift-f10
+
+type .rs.restartR() in the console. THIS DID NOT WORK PROPERLY, the environment workspace did clear using this method.
+
+## changing the picture for a post
+
+quarto blogs will display a picture in the listing of posts
+
+1. put a picture file (e.g.,jpg,png,gif) inside the folder for the post.
+2. link to the picture with image: parameter in the .qmd yaml at the top of the document
+
+the yaml for this document looks like:
+
+___
+title: "my tip sheet for week 2"
+author: "rachel babadzhanov"
+image: "images/cover.jpg"
+___
+
+## install.packages ("tidyverse")
+installing packages into 'C:/users/staff/Documents/R/win-library/4.1'
+(as 'lib' is unspecified)
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.1/tidyverse_1.3.2.zip'
+
+the main repository where packages reside is called CRAN
+
+## difference between installing a package aznd loading a package
+
+1. install.packages().
+  it will be available but not loaded every time you open up R.
+  
+  ** never install a package from inside a scrip. only from console pane or the packages tab of the lower right pane. 
+  
+loading a package is done using the library() function. (aka. lauching an app)
+
+run the function using beep()
+
+if a package isn't loaded, use ?package_name::function_name
+  
+
+## themes and accessibility
+used to change the font, size, and general appearance of R studio
+
+1. go to tools
+2. then global options
+3. then appearance 
+
+
+
+
+
+------------------------------------------------------------------------

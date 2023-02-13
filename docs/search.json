@@ -18,7 +18,7 @@
     "href": "posts/coding tips/index.html",
     "title": "coding tips",
     "section": "",
-    "text": "coding tips"
+    "text": "How to commit and push changes to github?\n\nMake some changes to your files\nRender your website in Rstudio\nCommit your changes in github desktop with a commit message\nPush to github.com"
   },
   {
     "objectID": "posts/Example_assignment/index.html",
@@ -60,6 +60,41 @@
     "href": "index.html",
     "title": "quartoCourseBlog",
     "section": "",
-    "text": "rachel babadzhanov\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\nNo matching items"
+    "text": "coding tips\n\n\n\n\n\n\n\n\n\n\n\n\nRachel Babadzhanov\n\n\n\n\n\n\n  \n\n\n\n\nTest\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nExample assignment\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nMy First post\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#restarting-r",
+    "href": "posts/coding tips/index.html#restarting-r",
+    "title": "coding tips",
+    "section": "restarting R",
+    "text": "restarting R\nsession –> restart R\ncmd-shift-f10\ntype .rs.restartR() in the console. THIS DID NOT WORK PROPERLY, the environment workspace did clear using this method."
+  },
+  {
+    "objectID": "posts/coding tips/index.html#changing-the-picture-for-a-post",
+    "href": "posts/coding tips/index.html#changing-the-picture-for-a-post",
+    "title": "coding tips",
+    "section": "changing the picture for a post",
+    "text": "changing the picture for a post\nquarto blogs will display a picture in the listing of posts\n\nput a picture file (e.g.,jpg,png,gif) inside the folder for the post.\nlink to the picture with image: parameter in the .qmd yaml at the top of the document\n\nthe yaml for this document looks like:\n\ntitle: “my tip sheet for week 2” author: “rachel babadzhanov” image: “images/cover.jpg” ___"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#install.packages-tidyverse",
+    "href": "posts/coding tips/index.html#install.packages-tidyverse",
+    "title": "coding tips",
+    "section": "install.packages (“tidyverse”)",
+    "text": "install.packages (“tidyverse”)\ninstalling packages into ‘C:/users/staff/Documents/R/win-library/4.1’ (as ‘lib’ is unspecified) trying URL ‘https://cran.rstudio.com/bin/windows/contrib/4.1/tidyverse_1.3.2.zip’\nthe main repository where packages reside is called CRAN"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
+    "href": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
+    "title": "coding tips",
+    "section": "difference between installing a package aznd loading a package",
+    "text": "difference between installing a package aznd loading a package\n\ninstall.packages(). it will be available but not loaded every time you open up R.\n\n** never install a package from inside a scrip. only from console pane or the packages tab of the lower right pane.\nloading a package is done using the library() function. (aka. lauching an app)\nrun the function using beep()\nif a package isn’t loaded, use ?package_name::function_name"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#themes-and-accessibility",
+    "href": "posts/coding tips/index.html#themes-and-accessibility",
+    "title": "coding tips",
+    "section": "themes and accessibility",
+    "text": "themes and accessibility\nused to change the font, size, and general appearance of R studio\n\ngo to tools\nthen global options\nthen appearance"
   }
 ]
