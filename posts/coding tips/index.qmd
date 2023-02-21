@@ -63,6 +63,8 @@ used to change the font, size, and general appearance of R studio
 2. then global options
 3. then appearance 
 
+more tips to come
+
 
 
 
