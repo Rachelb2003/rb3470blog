@@ -1,0 +1,162 @@
+---
+title: "week 4"
+author: rachel babadzhanov
+---
+
+```{r}
+#loads ggplot2, and some example data sets
+library(tidyverse)
+
+starwars_copy <- starwars
+
+# check out some of the datatypes
+head(starwars_copy)
+class(starwars_copy$name)
+class(starwars_copy$height)
+class(starwars_copy$mass)
+class(starwars_copy$homeworld)
+
+# plot some variables
+ggplot(data = starwars_copy,
+       mapping = aes(x=height,y=mass) )+
+  geom_point()
+
+```
+
+## Data Types
+
+```{r}
+# assign 1 to object named a
+a <- 1
+1 -> b
+f <- 4 -> g
+```
+
+```{r}
+# look at the data type of object in a
+class(a)
+typeof(a)
+```
+
+#### integers
+
+```{r}
+#integers (no decimals)
+# L specifies integer
+typeof(1L) 
+class(1L)
+is.integer(1L)
+as.integer(1.1) # coerces to integer
+as.integer(1.5) # rounds down
+as.integer(1.9) # rounds down
+integer(length = 5) #initialize a vector for integers
+is.integer(as.integer(1:5))
+```
+
+#### numeric/doubles
+
+```{r}
+# decimal numbers
+# numbers without decimals default to numeric
+typeof(1) 
+class(1)
+is.numeric(1)
+as.numeric(1L) # coerces integer to numeric
+numeric(length = 5) #initialize a vector for doubles
+```
+
+#### Logical/Boolean
+
+Uppercase TRUE, or FALSE makes logical (binary) variables
+
+```{r}
+typeof(TRUE)
+class(TRUE)
+is.logical(FALSE)
+as.logical(1) # coerces 1 to TRUE
+as.logical(0) # coerces 0  to FALSE
+logical(length = 5) # initialize a logical vector
+```
+
+### data.frame
+
+A table with rows and columns.
+
+```{r}
+my_df <- data.frame(a = 1:5,
+                    b = c("one","two","three","four","five"),
+                    random = runif(5,0,1))
+#print to see it
+my_df
+# access columns with $
+my_df$a == 1:5
+my_df$b
+## access rows or columns with [row,column]
+my_df[1,] # row 1, all columns
+my_df[,1] # column 1, all rows
+my_df[1:2,] # rows 1 to 2, all columns
+my_df[1:2, 3] # rows 1 to 2, but only for column 3
+```
+
+### Tibble
+
+A table with rows and columns.
+
+```{r}
+my_df <- tibble(a = 1:5,
+                    b = c("one","two","three","four","five"),
+                    random = runif(5,0,1))
+#print to see it
+my_df
+# access columns with $
+my_df$a
+my_df$b
+## access rows or columns with [row,column]
+my_df[1,] # row 1, all columns
+my_df[,1] # column 1, all rows
+my_df[1:2,] # rows 1 to 2, all columns
+my_df[1:2, 3] # rows 1 to 2, but only for column 3
+my_df
+```
+
+## ggplot2
+
+```{r}
+survey_data <- read_csv("https://psyteachr.github.io/ads-v2/data/survey_data.csv")
+head(survey_data)
+library(tidyverse)
+library(ggplot2)
+ggplot()
+ggplot(data = survey_data,
+       mapping = aes(x = wait_time,
+                     y = satisfaction)
+       )
+ggplot(survey_data, aes(x = wait_time, y = satisfaction))
+ggplot(survey_data, 
+       aes(x = wait_time, 
+           y = satisfaction)) + 
+  geom_point()
+ggplot(survey_data, 
+       aes(x = wait_time, 
+           y = satisfaction)) + 
+  geom_point(color="red")
+ggplot(survey_data, 
+       aes(x = wait_time, 
+           y = satisfaction)) + 
+  geom_point(color="black", size = 5) +
+   geom_point(color="#fa2fcb", size = 4) +
+  geom_smooth(method ="lm")
+  
+ggplot(survey_data, 
+       aes(x = wait_time, 
+           y = satisfaction,
+           color = wait_time,
+           size = satisfaction)) + 
+  geom_point()
+min(survey_data$wait_time)
+max(survey_data$wait_time)
+length(survey_data$wait_time)
+ggplot(data=survey_data, mapping= aes(x=wait_time))+
+  geom_histogram(bins=50, color="red") +
+  theme_classic()
+```
