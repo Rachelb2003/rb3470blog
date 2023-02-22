@@ -1,0 +1,14 @@
+{
+  "hash": "7fcdb4bbdc269b6b96498cf737f1dfac",
+  "result": {
+    "markdown": "---\ntitle: \"week 3\"\nauthor: \"rachel babadzhanov\"\n---\n\n\n# make a new qmd\n\n1.  Be able to make a new .qmd document\n\nyes. copy a folder, and use copied .qmd\n\n2.  Be able to render a .qmd document\n\n    yes...\n\n# source vs visual\n\n3.  Explain the difference between the source editor view and visual editor view in Rstudio.\n\nsource view is plain text. visual view renders plain text and interpret as markdown text. shows text formatting instead of plain text.\n\n**bold**\n\n4.  Be able to insert simple markdown plain text (headers, lists, paragraphs), and render the document.\n\nwrite some stuff ***asasas***\n\n*italics* **bold**\n\nsuperscriptpt^2^ / subscript~2~\n\nsomething^3459834^\n\n~~strikethrough~~\n\n`verbatim code`\n\n-   unordered list\n    -   sub-item 1\n    -   sub-item 2\n        -   sub-sub-item 1\n\n| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|    12 | 12   | 12      |   12   |\n|   123 | 123  | 123     |  123   |\n|     1 | 1    | 1       |   1    |\n\n$E = mc^{2}$\n\n5.  Be aware of resources to help you learn more about markdown options.\n\n\n6.  Be able to insert an R code chunk, and show the output in the rendered document.\n\n-   macro for quick insert\n\noption, compand, i\n\n``` default\nwhat does this look like?\n```\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1+1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n\n\n7.  Running R code chunks in a qmd\n\n-   pressing play\n-   copy/paste into console\n-   highlight then command-enter (mac)\n-   precedence issues (first to last)\n\n8.  Be aware of R code chunk options, and how to use eval, messages, error, warning, and echo.\n\n\n\n::: {.cell}\n\n:::\n\n\n9.  Be able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)\n\nYes. Use execute in top-level yml, chunk options have precedence over global options.\n\n\n10. Write inline r code.\n\n2\n\n\n::: {.cell}\n\n```{.r .cell-code}\na <- 54\nb <- 100\nc <- a+b\n```\n:::\n\n\nThe value of c is 154.\n\n10. Explain how the rendering environment is different from the Rstudio environment.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nc <- a+b\nc\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 154\n```\n:::\n:::\n\n\n11. \n\n    ## Be aware of more advanced quarto options for html documents, and try some of the options.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

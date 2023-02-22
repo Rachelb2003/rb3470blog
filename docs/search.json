@@ -4,7 +4,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "“About” pages are special quarto template pages, with multiple options: https://quarto.org/docs/websites/website-about.html.\nTry changing the template type from jolla to one of the other options for a different look and feel."
+    "text": "The content on this page is from about.qmd. Edit that file to change how this page looks.\n“About” pages are special quarto template pages, with multiple options: https://quarto.org/docs/websites/website-about.html.\nTry changing the template type from jolla to one of the other options for a different look and feel."
+  },
+  {
+    "objectID": "posts/third week/index.html",
+    "href": "posts/third week/index.html",
+    "title": "week 3",
+    "section": "",
+    "text": "make a new qmd\n\nBe able to make a new .qmd document\n\nyes. copy a folder, and use copied .qmd\n\nBe able to render a .qmd document\nyes…\n\n\n\nsource vs visual\n\nExplain the difference between the source editor view and visual editor view in Rstudio.\n\nsource view is plain text. visual view renders plain text and interpret as markdown text. shows text formatting instead of plain text.\nbold\n\nBe able to insert simple markdown plain text (headers, lists, paragraphs), and render the document.\n\nwrite some stuff asasas\nitalics bold\nsuperscriptpt2 / subscript2\nsomething3459834\nstrikethrough\nverbatim code\n\nunordered list\n\nsub-item 1\nsub-item 2\n\nsub-sub-item 1\n\n\n\n\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n\\(E = mc^{2}\\)\n\nBe aware of resources to help you learn more about markdown options.\nBe able to insert an R code chunk, and show the output in the rendered document.\n\n\nmacro for quick insert\n\noption, compand, i\nwhat does this look like?\n\n1+1\n\n[1] 2\n\n\n\nRunning R code chunks in a qmd\n\n\npressing play\ncopy/paste into console\nhighlight then command-enter (mac)\nprecedence issues (first to last)\n\n\nBe aware of R code chunk options, and how to use eval, messages, error, warning, and echo.\n\n\n\n\n\nBe able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)\n\nYes. Use execute in top-level yml, chunk options have precedence over global options.\n\nWrite inline r code.\n\n2\n\na <- 54\nb <- 100\nc <- a+b\n\nThe value of c is 154.\n\nExplain how the rendering environment is different from the Rstudio environment.\n\n\nc <- a+b\nc\n\n[1] 154\n\n\n\nBe aware of more advanced quarto options for html documents, and try some of the options."
   },
   {
     "objectID": "posts/third/index.html",
@@ -19,6 +26,48 @@
     "title": "coding tips",
     "section": "",
     "text": "How to commit and push changes to github?\n\nMake some changes to your files\nRender your website in Rstudio\nCommit your changes in github desktop with a commit message\nPush to github.com"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#restarting-r",
+    "href": "posts/coding tips/index.html#restarting-r",
+    "title": "coding tips",
+    "section": "restarting R",
+    "text": "restarting R\nsession –> restart R\ncmd-shift-f10\ntype .rs.restartR() in the console. THIS DID NOT WORK PROPERLY, the environment workspace did clear using this method."
+  },
+  {
+    "objectID": "posts/coding tips/index.html#changing-the-picture-for-a-post",
+    "href": "posts/coding tips/index.html#changing-the-picture-for-a-post",
+    "title": "coding tips",
+    "section": "changing the picture for a post",
+    "text": "changing the picture for a post\nquarto blogs will display a picture in the listing of posts\n\nput a picture file (e.g.,jpg,png,gif) inside the folder for the post.\nlink to the picture with image: parameter in the .qmd yaml at the top of the document\n\nthe yaml for this document looks like:\n\ntitle: “my tip sheet for week 2” author: “rachel babadzhanov” image: “images/cover.jpg” ___"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#install.packages-tidyverse",
+    "href": "posts/coding tips/index.html#install.packages-tidyverse",
+    "title": "coding tips",
+    "section": "install.packages (“tidyverse”)",
+    "text": "install.packages (“tidyverse”)\ninstalling packages into ‘C:/users/staff/Documents/R/win-library/4.1’ (as ‘lib’ is unspecified) trying URL ‘https://cran.rstudio.com/bin/windows/contrib/4.1/tidyverse_1.3.2.zip’\nthe main repository where packages reside is called CRAN"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
+    "href": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
+    "title": "coding tips",
+    "section": "difference between installing a package aznd loading a package",
+    "text": "difference between installing a package aznd loading a package\n\ninstall.packages(). it will be available but not loaded every time you open up R.\n\n** never install a package from inside a scrip. only from console pane or the packages tab of the lower right pane.\nloading a package is done using the library() function. (aka. lauching an app)\nrun the function using beep()\nif a package isn’t loaded, use ?package_name::function_name"
+  },
+  {
+    "objectID": "posts/coding tips/index.html#themes-and-accessibility",
+    "href": "posts/coding tips/index.html#themes-and-accessibility",
+    "title": "coding tips",
+    "section": "themes and accessibility",
+    "text": "themes and accessibility\nused to change the font, size, and general appearance of R studio\n\ngo to tools\nthen global options\nthen appearance\n\nmore tips to come"
+  },
+  {
+    "objectID": "posts/UntitledQMD.html",
+    "href": "posts/UntitledQMD.html",
+    "title": "quartoCourseBlog",
+    "section": "",
+    "text": "install.packages(“rmarkdown”)"
   },
   {
     "objectID": "posts/Example_assignment/index.html",
@@ -60,41 +109,6 @@
     "href": "index.html",
     "title": "quartoCourseBlog",
     "section": "",
-    "text": "coding tips\n\n\n\n\n\n\n\n\n\n\n\n\nRachel Babadzhanov\n\n\n\n\n\n\n  \n\n\n\n\nTest\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nExample assignment\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nMy First post\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/coding tips/index.html#restarting-r",
-    "href": "posts/coding tips/index.html#restarting-r",
-    "title": "coding tips",
-    "section": "restarting R",
-    "text": "restarting R\nsession –> restart R\ncmd-shift-f10\ntype .rs.restartR() in the console. THIS DID NOT WORK PROPERLY, the environment workspace did clear using this method."
-  },
-  {
-    "objectID": "posts/coding tips/index.html#changing-the-picture-for-a-post",
-    "href": "posts/coding tips/index.html#changing-the-picture-for-a-post",
-    "title": "coding tips",
-    "section": "changing the picture for a post",
-    "text": "changing the picture for a post\nquarto blogs will display a picture in the listing of posts\n\nput a picture file (e.g.,jpg,png,gif) inside the folder for the post.\nlink to the picture with image: parameter in the .qmd yaml at the top of the document\n\nthe yaml for this document looks like:\n\ntitle: “my tip sheet for week 2” author: “rachel babadzhanov” image: “images/cover.jpg” ___"
-  },
-  {
-    "objectID": "posts/coding tips/index.html#install.packages-tidyverse",
-    "href": "posts/coding tips/index.html#install.packages-tidyverse",
-    "title": "coding tips",
-    "section": "install.packages (“tidyverse”)",
-    "text": "install.packages (“tidyverse”)\ninstalling packages into ‘C:/users/staff/Documents/R/win-library/4.1’ (as ‘lib’ is unspecified) trying URL ‘https://cran.rstudio.com/bin/windows/contrib/4.1/tidyverse_1.3.2.zip’\nthe main repository where packages reside is called CRAN"
-  },
-  {
-    "objectID": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
-    "href": "posts/coding tips/index.html#difference-between-installing-a-package-aznd-loading-a-package",
-    "title": "coding tips",
-    "section": "difference between installing a package aznd loading a package",
-    "text": "difference between installing a package aznd loading a package\n\ninstall.packages(). it will be available but not loaded every time you open up R.\n\n** never install a package from inside a scrip. only from console pane or the packages tab of the lower right pane.\nloading a package is done using the library() function. (aka. lauching an app)\nrun the function using beep()\nif a package isn’t loaded, use ?package_name::function_name"
-  },
-  {
-    "objectID": "posts/coding tips/index.html#themes-and-accessibility",
-    "href": "posts/coding tips/index.html#themes-and-accessibility",
-    "title": "coding tips",
-    "section": "themes and accessibility",
-    "text": "themes and accessibility\nused to change the font, size, and general appearance of R studio\n\ngo to tools\nthen global options\nthen appearance\n\nmore tips to come"
+    "text": "week 3\n\n\n\n\n\n\n\n\n\n\n\n\nrachel babadzhanov\n\n\n\n\n\n\n  \n\n\n\n\ncoding tips\n\n\n\n\n\n\n\n\n\n\n\n\nRachel Babadzhanov\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nTest\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nExample assignment\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\n  \n\n\n\n\nMy First post\n\n\n\n\n\n\n\ngoals\n\n\ngeneral\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nMatt Crump\n\n\n\n\n\n\nNo matching items"
   }
 ]

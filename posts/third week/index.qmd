@@ -1,0 +1,113 @@
+---
+title: "week 3"
+author: "rachel babadzhanov"
+---
+
+# make a new qmd
+
+1.  Be able to make a new .qmd document
+
+yes. copy a folder, and use copied .qmd
+
+2.  Be able to render a .qmd document
+
+    yes...
+
+# source vs visual
+
+3.  Explain the difference between the source editor view and visual editor view in Rstudio.
+
+source view is plain text. visual view renders plain text and interpret as markdown text. shows text formatting instead of plain text.
+
+**bold**
+
+4.  Be able to insert simple markdown plain text (headers, lists, paragraphs), and render the document.
+
+write some stuff ***asasas***
+
+*italics* **bold**
+
+superscriptpt^2^ / subscript~2~
+
+something^3459834^
+
+~~strikethrough~~
+
+`verbatim code`
+
+-   unordered list
+    -   sub-item 1
+    -   sub-item 2
+        -   sub-sub-item 1
+
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|    12 | 12   | 12      |   12   |
+|   123 | 123  | 123     |  123   |
+|     1 | 1    | 1       |   1    |
+
+$E = mc^{2}$
+
+5.  Be aware of resources to help you learn more about markdown options.
+
+
+6.  Be able to insert an R code chunk, and show the output in the rendered document.
+
+-   macro for quick insert
+
+option, compand, i
+
+``` default
+what does this look like?
+```
+
+```{r}
+
+1+1
+
+```
+
+7.  Running R code chunks in a qmd
+
+-   pressing play
+-   copy/paste into console
+-   highlight then command-enter (mac)
+-   precedence issues (first to last)
+
+8.  Be aware of R code chunk options, and how to use eval, messages, error, warning, and echo.
+
+
+```{r}
+#| echo: false 
+#| eval: false
+
+1:20
+```
+
+9.  Be able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)
+
+Yes. Use execute in top-level yml, chunk options have precedence over global options.
+
+
+10. Write inline r code.
+
+`r  1+1`
+
+```{r}
+a <- 54
+b <- 100
+c <- a+b
+```
+
+The value of c is `r c`.
+
+10. Explain how the rendering environment is different from the Rstudio environment.
+
+```{r}
+c <- a+b
+c
+```
+
+11. 
+
+    ## Be aware of more advanced quarto options for html documents, and try some of the options.
