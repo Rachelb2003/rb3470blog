@@ -1,6 +1,8 @@
 ---
 title: "week 6"
 author: "rachel babadzhanov"
+execute:
+  eval: false
 ---
 
 
