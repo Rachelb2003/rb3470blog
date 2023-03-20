@@ -6,7 +6,6 @@ website:
   title: "quartoCourseBlog"
   navbar:
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/CrumpLab/quartoCourseBlog
       - icon: twitter
