@@ -1,0 +1,346 @@
+---
+title: "week 7"
+author: "rachel babadzhanov"
+---
+
+```{r}
+##Make vectors before, then tibble, then GGPLOT
+library(tidyverse)
+
+grades <- c(2.5, 8, 4)
+students <- c("A" , "B", "C")
+student_performance <- tibble(grades, students)
+
+# alternate Syntax
+
+student_performance2 <- tibble(
+  grades = c(2.5, 8, 4),
+  students =c("A","B","C")
+ 
+)
+#this has a Y limiter
+ggplot(data=student_performance, aes(x=students, y=grades))+
+  geom_bar(stat= "identity", fill = "white" , color = "blue")+
+  scale_y_continuous(breaks = 0:10,limits = c(0,10))+
+  theme_classic(base_size = 12) +
+  geom_text(label = grades, position = position_dodge(width =.9) , vjust = .001)+
+  xlab("Students")+
+  ylab("Grades")+
+  ggtitle("Student Performance")
+
+```
+
+```{r}
+factor_one <- rep(rep(as.factor(c("A", "B", "C")), 2), 2)
+factor_two <- rep(rep(as.factor(c("IIA", "IIB")), 3), 2)
+factor_three <- rep(as.factor(c("IIIA", "IIIB")), each = 6)
+dv_means <- c(20, 30, 40, 20, 40, 40,
+          	10, 20, 50, 50, 10, 10)
+dv_SEs   <- c(4, 3.4, 4, 3, 2, 4,
+          	1, 2, 1, 2, 3, 2)
+plot_df <- data.frame(factor_one,
+                  	factor_two,
+                  	factor_three,
+                  	dv_means,
+                  	dv_SEs)
+
+# basic bar graph
+
+ggplot(plot_df,
+   	aes(
+     	x = factor_one,
+     	y = dv_means,
+     	group = factor_two,
+     	fill = factor_two
+   	)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap( ~ factor_three)
+```
+
+
+
+
+
+
+```{r}
+studies <- rep(c("Doctor \n Study 1 \n N = 199",
+             "Butcher \n Study 2 \n n = 199",
+             "Firefighter \n Study 2 \n n = 200",
+             "Construction \n Worker \n Study 2 \n n = 205"), each=3)
+likely <- rep(c("Women More Likely",
+            "Equally Likely",
+            "Man more Likely"),4)
+
+pp <- c(0,90,10,
+        5,60,35,
+        2,40,58,
+        5,60,35)/100
+
+plot_df <- data.frame(pp,studies,likely)
+
+plot_df$likely <- factor(plot_df$likely, 
+                         levels = c("Women More Likely",
+                                    "Equally Likely",
+                                    "Man more Likely"))
+
+plot_df$studies <- factor(plot_df$studies, 
+                         levels = c("Doctor \n Study 1 \n N = 199",
+             "Butcher \n Study 2 \n n = 199",
+             "Firefighter \n Study 2 \n n = 200",
+             "Construction \n Worker \n Study 2 \n n = 205"))
+
+ggplot(plot_df, aes(x=studies,
+                    y=pp,
+                    group=likely,
+                    fill=likely))+
+  geom_bar(stat="identity", width=.5)+
+  theme_classic(base_size=10)+
+  xlab("")+
+  ylab("Percentage of Participants")+
+  scale_y_continuous(breaks=seq(0,1,.1),labels = scales::percent)+
+  theme(legend.title = element_blank(),
+        axis.ticks.x.bottom = element_blank())
+
+```
+
+##ggplot2 - Grammar of Graphics | aes (Aestetics)
+
+```{r}
+#Lets put the data into a variable 
+survey_data <- read_csv("https://psyteachr.github.io/ads-v2/data/survey_data.csv")
+#Blank page
+ggplot()
+#x and Y values 
+ggplot(data = survey_data, 
+       mapping = aes(x= wait_time, 
+                     y= satisfaction))
+
+
+#+ time 
+ggplot(data = survey_data, 
+              aes(x= wait_time, 
+                  y= satisfaction)) +
+    geom_point(color = "black", size=5)+ 
+    geom_point(color = "pink", size=4)+
+    geom_smooth(method = "lm")
+    
+    
+##Summon CSV and put it into Survey_data
+ggplot(data = survey_data, 
+      aes(x= wait_time, 
+          y= satisfaction, 
+          color = satisfaction,
+          size = satisfaction))+
+  geom_point()
+
+
+min(survey_data$wait_time)
+max(survey_data$wait_time)
+length(survey_data$wait_time)
+
+ggplot(data=survey_data, mapping = aes(x= wait_time))+
+  geom_histogram(bins=50 , color="green")
+
+```
+Fill is the inside of the shape 
+Dv = dependent variable 
+dv_SEs 
+Geom_errorbar(aes(x = , y = ))
+
+
+
+```{r}
+library(ggpubr)
+
+Condition <-rep(c("No \n Transient","Transient"), each=2)
+Location <-rep(c("Outside","Inside"),2)
+MMRT <- c(304,300,290,280)
+CI_upper <-c(315,310,304,290)
+CI_lower <-c(295,290,283,270)
+plot_df <-data.frame(Condition,Location,MMRT,CI_upper,CI_lower)
+plot_df$Location <- factor(plot_df$Location, 
+                         levels = c("Outside","Inside"))
+
+vis<-ggplot(plot_df, aes(x=Condition, y=MMRT, group=Location,
+                    fill=Location))+
+  geom_bar(stat="identity",position="dodge", 
+           color="black",
+           size=.25)+
+  theme_classic()+
+  ylab("Mean Median RT (ms)")+
+  coord_cartesian(ylim=c(230,340))+
+  scale_y_continuous(breaks=seq(230,340,10))+
+  scale_fill_brewer(palette="Greys", direction=-1)+
+   theme(legend.position=c(0.55,0.8),
+        legend.title=element_blank(),
+        legend.key.size = unit(.5, "cm"))+
+  ggtitle("Visual Group")
+
+Condition <-rep(c("No \n Transient","Transient"), each=2)
+Location <-rep(c("Outside","Inside"),2)
+MMRT <- c(295,290,265,250)
+CI_upper <-c(305,300,275,260)
+CI_lower <-c(285,280,255,240)
+plot_df <-data.frame(Condition,Location,MMRT,CI_upper,CI_lower)
+plot_df$Location <- factor(plot_df$Location, 
+                         levels = c("Outside","Inside"))
+
+aud<-ggplot(plot_df, aes(x=Condition, y=MMRT, group=Location,
+                    fill=Location))+
+  geom_bar(stat="identity",position="dodge", 
+           color="black",
+           size=.25)+
+  theme_classic()+
+  ylab("Mean Median RT (ms)")+
+  coord_cartesian(ylim=c(230,340))+
+  scale_y_continuous(breaks=seq(230,340,10))+
+  scale_fill_brewer(palette="Greys", direction=-1)+
+   theme(legend.position="none")+
+  ggtitle("Auditory Group")
+
+ggarrange(vis,aud)
+
+```
+
+```{r}
+
+people <- rep(c("Family","Friends","Colleagues","Strangers"), each=5)
+big_five <- rep(c("Emotional \n Stability","Extraversion","Openness/ \n Intellect",
+              "Agreeableness","Consientiousness"), 4)
+mean_difference <-c(0,.3,.8,.4,.4,
+                    c(0,.3,.8,.4,.4)-.2,
+                    c(0,.3,.8,.4,.4)-.21,
+                    c(0,.3,.8,.4,.4)-.25)
+df <- data.frame(mean_difference,people,big_five)
+
+df$big_five <- factor(df$big_five, 
+                         levels = c("Emotional \n Stability","Extraversion","Openness/ \n Intellect",
+              "Agreeableness","Consientiousness"))
+
+df$people <- factor(df$people, 
+                         levels = c("Family","Friends","Colleagues","Strangers"))
+
+ggplot(df, aes(x=big_five, y=mean_difference,
+               group=people,
+               shape=people,
+               linetype=people,
+               color=people))+
+  scale_color_brewer(palette="Greys", direction=-1)+
+  geom_point()+
+  geom_line()+
+  xlab("")+
+  ylab("Mean Difference")+
+  coord_cartesian(ylim=c(-.8,.8))+
+  scale_y_continuous(breaks=seq(-.8,.8,.2))+
+  theme_classic()+
+  geom_hline(yintercept=0)+
+  theme(axis.line.x.bottom = element_blank(),
+        axis.ticks.x.bottom = element_blank(),
+        legend.title = element_blank())
+
+```
+
+
+
+```{r}
+evaluation<-c((seq(1,7,.1)+runif(61,-2,2)),
+              (seq(1,7,.1)+runif(61,-2,2)))
+pTarget <-c((seq(.92,.85,length.out=61)+runif(61,-.1,.1)),
+            (seq(.8,.4,length.out=61)+runif(61,-.5,.5)))
+Gender <- rep(c("Man Communicated with ATC",
+            "Woman Communicated with ATC"), each=61)
+plot_df<-data.frame(evaluation,pTarget,Gender)
+plot_df <- plot_df %>%
+              filter(evaluation>=1,
+                     evaluation<=7)
+
+ggplot(plot_df, aes(x=evaluation,y=pTarget,
+                    group=Gender,
+                    color=Gender))+
+  geom_smooth(method="lm")+
+  theme_classic()+
+  scale_y_continuous(breaks=seq(0,1,.1),labels = scales::percent)+
+  scale_x_continuous(breaks=seq(1,7,1))+
+  coord_cartesian(ylim=c(0,1))+
+  xlab("Evaluation of Person X")+
+  ylab("P(Target = Pilot)")+
+  theme(legend.position=c(0.45,0.2),
+        legend.title=element_blank(),
+        legend.key.size = unit(.5, "cm"))+
+  theme(legend.key = element_rect(colour = 'white', fill = 'white', size = 1, linetype='solid'))
+
+```
+
+
+```{r}
+
+A <- rexp(200)
+B <- rnorm(200,3,sd=1)
+C <- rnorm(200,3,sd=1)
+D <- rnorm(200,3,sd=1)
+DV <- c(A,B,C,D)
+studies <- rep(c("Doctor \n Study 1 \n N = 199",
+             "Butcher \n Study 2 \n n = 199",
+             "Firefighter \n Study 2 \n n = 200",
+             "Construction \n Worker \n Study 2 \n n = 205"), each=200)
+
+plot_df <-data.frame(DV,studies)
+
+plot_df$studies <- factor(plot_df$studies, 
+                         levels = c("Doctor \n Study 1 \n N = 199",
+             "Butcher \n Study 2 \n n = 199",
+             "Firefighter \n Study 2 \n n = 200",
+             "Construction \n Worker \n Study 2 \n n = 205"))
+
+library(dplyr)
+
+means_df <- plot_df %>%
+              group_by(studies) %>%
+              summarise(M=mean(DV),
+                        CI_lower = t.test(DV)$conf.int[1],
+                        CI_upper = t.test(DV)$conf.int[2])
+
+ggplot(means_df, aes(x=studies,y=M))+
+  geom_violin(data=plot_df, aes(x=studies,y=DV),fill="grey")+
+  theme_classic(base_size=10)+
+  xlab("")+
+  ylab("Evaluation of Person X")+
+  scale_y_continuous(breaks=seq(0,7,1))+
+  coord_cartesian(ylim=c(0,7))+
+  geom_point()+
+  geom_errorbar(aes(ymin=CI_lower,ymax=CI_upper), width=.2)
+
+```
+
+
+```{r}
+
+Gender <- rep(c("Men Performed Surgery \n n = 152",
+            "Women Performed Surgery \n n = 142"), each =3)
+Parameter <- rep(c("Prior",
+               "Model \n Posterior",
+               "Reported \n Posterior"), 2)
+p <- c(.7, .88, .87, .29, .72, .76)
+ci <- c(.05, .05, .05, .05, .05, .05)
+plot_df <- data.frame(p, ci, Gender, Parameter)
+plot_df$Parameter <- factor(plot_df$Parameter, 
+                         levels = c("Prior",
+               "Model \n Posterior",
+               "Reported \n Posterior"))
+
+ggplot(plot_df, aes(x=Parameter, y=p, fill=Parameter))+
+  geom_bar(stat="identity", position="dodge")+
+  facet_wrap(~Gender)+
+  theme_classic(base_size=11)+
+  scale_fill_manual(values=c("#F8766D", "#7CAE00", "#C77CFF"))+
+  ylab("P(Target = Doctor)")+
+  scale_y_continuous(breaks=seq(0,1,.1),labels = scales::percent)+
+  coord_cartesian(ylim=c(0,1))+
+  theme(panel.grid = element_blank(),
+        panel.spacing.x = unit(0,"line"),
+        panel.border = element_blank(),
+        panel.background = element_blank())+
+  theme(strip.background = element_rect(colour = 'white', fill = 'white', size = 0))+
+  theme(legend.position = "none")
+
+```
