@@ -27,7 +27,7 @@ my_num[1] <- 50
 
 ```
 
-#logical operations
+# logical operations
 
 ```{r}
 
@@ -274,7 +274,7 @@ repeat {
 }
 ```
 
-#functions
+# functions
 
 ```{r}
 
