@@ -1,0 +1,193 @@
+---
+title: "week 9"
+---
+
+```{r, echo=FALSE, message=FALSE}
+
+#load libraries
+library(tidyverse)
+
+#load the data
+review_data <- rio::import("data/review_data.csv")
+```
+
+## Number of reviews by year
+
+```{r, echo= FALSE}
+#Get number of reviews per year
+reviews_by_year <- review_data %>%
+  group_by(year) %>%
+  summarize(counts = n())
+#ggplot(data = reviews_by_year, mapping = aes(x=year, y=counts))
+#ggplot(reviews_by_year, aes(x=year, y=counts))
+# plot
+ggplot(data = reviews_by_year, mapping = aes(x=year, y=counts))+
+  geom_bar(stat= "identity",fill="white",color="black")+
+  scale_x_continuous(breaks = 1999:2018)+
+  theme(axis.text.x = element_text(angle = 85, vjust = 1, hjust=1))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Number of reviews per year",
+          subtitle = "1999 to 2018")+
+  theme(
+    panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                linewidth = 0.5, linetype = "solid"),
+    panel.grid.major=element_line(colour="black",linewidth = .05),
+    panel.grid.minor=element_line(colour="lightgrey"),
+    plot.background = element_rect(fill = "lightgrey"))
+```
+
+## Verified users
+
+```{r, echo= FALSE}
+
+verified_reviews <- review_data %>%
+  group_by(verified) %>%
+  summarize(counts = n())
+  
+# print table
+knitr::kable(verified_reviews)
+
+```
+
+```{r, echo= FALSE}
+#Get number of reviews per year
+
+year_by_verified_counts <- review_data %>%
+  group_by(year,verified) %>%
+  summarize(counts = n())
+  
+#ggplot(data = reviews_by_year, mapping = aes(x=year, y=counts))
+#ggplot(reviews_by_year, aes(x=year, y=counts))
+
+# plot
+
+ggplot(data = year_by_verified_counts, 
+       mapping = aes(x=year, 
+                     y=counts, 
+                     group = verified,
+                     fill = verified))+
+  geom_bar(stat= "identity")+
+  scale_x_continuous(breaks = 1999:2018)+
+  scale_fill_manual(values = c('#1b9e77','#d95f02'))+
+  theme(axis.text.x = element_text(angle = 85, vjust = 1, hjust=1))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Number of reviews per year",
+          subtitle = "By purchase status")+
+  theme(
+    panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                linewidth = 0.5, linetype = "solid"),
+    panel.grid.major=element_line(colour="black",linewidth = .05),
+    panel.grid.minor=element_line(colour="lightgrey"))
+  
+```
+
+##Total number of reviews assigned each rating
+
+```{r, echo= FALSE}
+#Get number of reviews per each rating
+options(scipen = 999)
+reviews_by_rating <- review_data %>%
+  group_by(rating) %>%
+  summarize(counts = n())
+#ggplot(data = reviews_by_year, mapping = aes(x=year, y=counts))
+#ggplot(reviews_by_year, aes(x=year, y=counts))
+# plot
+ggplot(data = reviews_by_rating, mapping = aes(x=rating, y=counts))+
+  geom_bar(stat= "identity",fill="white",color="black")+
+  xlab("")+
+  ylab("")+
+  ggtitle("Review Ratings",
+          subtitle = "Number of reviews for each rating")+
+  theme(
+    panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                linewidth = 0.5, linetype = "solid"),
+    panel.grid.major=element_line(colour="black",linewidth = .05),
+    panel.grid.minor=element_line(colour="lightgrey"))
+```
+
+## By purchase status
+
+```{r}
+#Get number of reviews per year
+
+rating_by_verified_counts <- review_data %>%
+  group_by(rating,verified) %>%
+  summarize(counts = n())
+  
+#ggplot(data = reviews_by_year, mapping = aes(x=year, y=counts))
+#ggplot(reviews_by_year, aes(x=year, y=counts))
+
+# plot
+
+ggplot(data = rating_by_verified_counts, 
+       mapping = aes(x=rating, 
+                     y=counts, 
+                     group = verified,
+                     fill = verified))+
+  geom_bar(stat= "identity", position = "dodge")+
+  xlab("")+
+  ylab("")+
+  ggtitle("Review Ratings",
+          subtitle = "By purchase status")+
+  theme(
+    panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                linewidth = 0.5, linetype = "solid"),
+    panel.grid.major=element_line(colour="black",linewidth = .05),
+    panel.grid.minor=element_line(colour="lightgrey"))
+```
+
+# Average ratings
+
+## By purchase status
+
+Average ratings for verified reviews were higher (both mean and median) than for unverified review, likely driven by the number of 5-star reviews for verified reviews.
+
+```{r, echo= FALSE}
+#| label: tbl-verified-descriptive
+#| tbl-cap: Average ratings by purchase status
+#Get mean and median ratings by verified users
+verified_descriptives <- review_data %>%
+  group_by(verified) %>%
+  summarize(`Mean rating` = round(mean(rating), digits=2),
+            `Median rating` = median(rating)) %>%
+  rename(Verified = verified)
+# print table
+knitr::kable(verified_descriptives)
+```
+
+## By year and purchase status
+
+```{r}
+year_rating_status <- review_data %>%
+  group_by(year,verified) %>%
+  summarise(mean_rating = mean(rating),.groups = 'drop')
+  
+# plot
+
+ggplot(data = year_rating_status, 
+       mapping = aes(x=year, 
+                     y=mean_rating, 
+                     group = verified,
+                     color = verified))+
+  geom_line()+
+  geom_point()+
+  scale_x_continuous(breaks = 1999:2018)+
+  scale_color_manual(values = c('#1b9e77','#d95f02'))+
+  theme(axis.text.x = element_text(angle = 85, vjust = 1, hjust=1))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Average Ratings",
+          subtitle = "By year and purchase status")+
+  theme(
+    panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                linewidth = 0.5, linetype = "solid"),
+    panel.grid.major=element_line(colour="black",linewidth = .05),
+    panel.grid.minor=element_line(colour="lightgrey"))
+```
