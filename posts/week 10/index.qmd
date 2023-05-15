@@ -3,7 +3,6 @@ title: "week 10"
 author: "rachel babadzhanov"
 ---
 
-
 ```{r setup, include=FALSE}
 library(tidyverse) # for data wrangling
 ```
@@ -51,6 +50,7 @@ wide_totalprice <- select(
 untidy_data[ , c(1,5,6,7) ]
 untidy_data[ , c(1,5:7) ]
 ```
+
 ## pivot the table longer
 
 ```{r}
@@ -127,7 +127,6 @@ tidy_data <- type_convert(
 # check the data types
 glimpse(tidy_data)
 ```
-
 
 ## convert messy to tidy
 

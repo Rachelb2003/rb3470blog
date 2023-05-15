@@ -3,7 +3,6 @@ title: "week 11"
 author: "rachel babadzhanov"
 ---
 
-
 ```{r}
 library(dplyr)
 library(tidyverse)
@@ -221,4 +220,3 @@ budget4 %>%
     max_profit = max(expenses - sales)
   )
 ```
-
