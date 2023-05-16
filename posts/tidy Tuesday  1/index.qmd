@@ -3,7 +3,6 @@ title: "tidy tuesday 1: London Marathon"
 Author: "Rachel Babadzhanov"
 ---
 
-
 ```{r}
 
 library(tidyverse)
@@ -97,7 +96,3 @@ ggplot(data = london_marathon,
 
 
 ```
-
-
-
-

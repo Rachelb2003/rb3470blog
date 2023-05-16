@@ -52,7 +52,6 @@ bar <- ggplot(data = survey_data,
 
 ```
 
-
 ```{r}
 
 #create scatterplot
