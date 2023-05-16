@@ -4,6 +4,16 @@ Author: "Rachel Babadzhanov"
 ---
 
 ```{r}
+
+plots <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/plots.csv')
+species <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/species.csv')
+surveys <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/surveys.csv')
+
+
+
+```
+
+```{r}
 #| eval: false
 #install.packages("tidytuesdayR")
 ```
@@ -14,16 +24,7 @@ Author: "Rachel Babadzhanov"
 library(tidyverse)
 ```
 
-## load data using the tidytuesdayR package
 
-```{r}
-tuesdata <- tidytuesdayR::tt_load('2023-05-02')
-
-plots <- tuesdata$plots
-species <- tuesdata$species
-surveys <- tuesdata$surveys
-
-```
 
 ## mice per year
 
@@ -94,20 +95,8 @@ ggplot(monthly_data, aes(x=month, y=proportion_pregnant))+
 
 ```
 
-## bob ross
 
-```{r}
-tuesdata <- tidytuesdayR::tt_load('2023-02-21')
-#tuesdata <- tidytuesdayR::tt_load(2023, week = 8)
 
-bob_ross <- tuesdata$bob_ross
 
-```
-
-```{r}
-ggplot(bob_ross, aes(x=num_colors))+
-  geom_histogram()
-
-```
 
 
